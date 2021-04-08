@@ -2,7 +2,7 @@ import React from 'react'
 import {render, screen} from '@testing-library/react'
 import Collapsible from '../'
 
-test('increments the count', () => {
+test('collapses and expands children', () => {
   render(<Collapsible>children</Collapsible>)
   expect(screen.queryByText("children")).toBeNull();
 
