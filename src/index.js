@@ -1,4 +1,5 @@
 import React from 'react'
+import './style.css'
 
 function Collapsible({children}) {
   const [isCollapsed, setIsCollapsed] = React.useState(true)
