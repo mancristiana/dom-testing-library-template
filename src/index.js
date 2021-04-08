@@ -1,9 +1,20 @@
 import React from 'react'
 
-function Counter() {
-  const [count, setCount] = React.useState(0)
-  const increment = () => setCount(c => c + 1)
-  return <button onClick={increment}>{count}</button>
+function Collapsible({children}) {
+  const [isCollapsed, setIsCollapsed] = React.useState(true)
+  return (
+    <div>
+      <button onClick={() => setIsCollapsed(!isCollapsed)}>
+        {isCollapsed ? "Expand" : "Collapse"}
+      </button>
+      <p
+        aria-hidden={isCollapsed}
+        className={isCollapsed ? "hide" : "show"}
+      >
+        {children}
+      </p>
+    </div>
+  )
 }
 
-export default Counter
+export default Collapsible

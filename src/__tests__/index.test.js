@@ -1,13 +1,15 @@
 import React from 'react'
-import {render, fireEvent} from '@testing-library/react'
-import Counter from '../'
+import {render, screen} from '@testing-library/react'
+import Collapsible from '../'
 
 test('increments the count', () => {
-  const {getByText} = render(<Counter />)
-  const button = getByText('0')
-  fireEvent.click(button)
-  expect(button).toHaveTextContent('1')
-  fireEvent.click(button)
-  expect(button).toHaveTextContent('2')
+  render(<Collapsible>children</Collapsible>)
+  expect(screen.queryByText("children")).toBeNull();
+
+  userEvent.click(screen.getByRole("button", { name: "Expand" }));
+  expect(screen.getByText("children")).toBeInTheDocument();
+
+  userEvent.click(screen.getByRole("button", { name: "Collapse" }));
+  expect(screen.queryByText("children")).toBeNull();
 })
 
