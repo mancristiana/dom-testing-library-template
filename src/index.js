@@ -7,12 +7,12 @@ function Collapsible({children}) {
       <button onClick={() => setIsCollapsed(!isCollapsed)}>
         {isCollapsed ? "Expand" : "Collapse"}
       </button>
-      <p
+      <div
         aria-hidden={isCollapsed}
         className={isCollapsed ? "hide" : "show"}
       >
         {children}
-      </p>
+      </div>
     </div>
   )
 }
